@@ -37,4 +37,7 @@
 # Other
 *.map
 .settings
-armgcc/Debug
+armgcc/cryoTest
+.cproject
+.project
+
