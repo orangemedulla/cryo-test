@@ -122,34 +122,37 @@ override ASMFLAGS += -x assembler-with-cpp -D$(DEVICE) -Wall -Wextra -mcpu=corte
 #
 override LDFLAGS += -Xlinker -Map=$(LST_DIR)/$(PROJECTNAME).map -mcpu=cortex-m4 \
 -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16 \
--T../../../../../Device/SiliconLabs/EFM32PG1B/Source/GCC/efm32pg1b.ld \
+-T../Device/SiliconLabs/EFM32PG1B/Source/GCC/efm32pg1b.ld \
  -Wl,--gc-sections 
 
 LIBS = -Wl,--start-group -lgcc -lc -lnosys   -Wl,--end-group
 
 INCLUDEPATHS += \
 -I.. \
--I../../../../../CMSIS/Include \
--I../../../../../Device/SiliconLabs/EFM32PG1B/Include \
--I../../../../../emlib/inc \
--I../../../../common/drivers \
--I../../../../common/bsp \
--I../../../config
+-I../CMSIS/Include \
+-I../Device/SiliconLabs/EFM32PG1B/Include \
+-I../emlib/inc \
+-I../common/drivers \
+-I../BSP
 
 ####################################################################
 # Files                                                            #
 ####################################################################
 
 C_SRC +=  \
-../../../../../Device/SiliconLabs/EFM32PG1B/Source/system_efm32pg1b.c \
-../../../../../emlib/src/em_assert.c \
-../../../../../emlib/src/em_system.c \
+../Device/SiliconLabs/EFM32PG1B/Source/system_efm32pg1b.c \
+../emlib/src/em_assert.c \
+../emlib/src/em_system.c \
+../emlib/src/em_rmu.c \
+../emlib/src/em_emu.c \
+../emlib/src/em_cmu.c \
+../emlib/src/em_cryotimer.c \
 ../cryoTest.c
 
 s_SRC += 
 
 S_SRC +=  \
-../../../../../Device/SiliconLabs/EFM32PG1B/Source/GCC/startup_efm32pg1b.S
+../Device/SiliconLabs/EFM32PG1B/Source/GCC/startup_efm32pg1b.S
 
 ####################################################################
 # Rules                                                            #
